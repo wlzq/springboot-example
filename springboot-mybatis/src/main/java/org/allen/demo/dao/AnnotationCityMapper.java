@@ -1,6 +1,6 @@
 package org.allen.demo.dao;
 
-import org.allen.demo.doamin.City;
+import org.allen.demo.domain.City;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

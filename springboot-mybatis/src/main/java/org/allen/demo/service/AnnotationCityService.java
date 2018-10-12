@@ -1,7 +1,7 @@
 package org.allen.demo.service;
 
 import org.allen.demo.dao.AnnotationCityMapper;
-import org.allen.demo.doamin.City;
+import org.allen.demo.domain.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

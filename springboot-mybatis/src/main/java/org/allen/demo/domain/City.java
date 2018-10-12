@@ -1,4 +1,4 @@
-package org.allen.demo.doamin;
+package org.allen.demo.domain;
 
 public class City {
 

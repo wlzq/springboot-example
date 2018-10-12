@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.allen.demo.dao.XmlCityMapper" >
+    <resultMap id="BaseResultMap" type="org.allen.demo.domain.City" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="cityCode" property="cityCode" jdbcType="VARCHAR" />
+        <result column="cityName" property="cityName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResultMap">
+      select * from t_city where id = #{id}
+    </select>
+
+    <update id="update1" parameterType="org.allen.demo.domain.City">
+      update t_city set cityName = #{cityName} where cityCode = #{cityCode}
+    </update>
+
+    <insert id="insert" parameterType="org.allen.demo.domain.City">
+      insert into t_city(cityCode, cityName) values (#{cityCode},#{cityName})
+    </insert>
+
+    <delete id="delete1" parameterType="java.lang.Integer">
+        delete from t_city where id = #{id}
+    </delete>
+</mapper>
