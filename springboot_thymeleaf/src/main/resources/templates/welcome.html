@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Insert title here</title>
+</head>
+<body>
+thymeleaf 简单用法!<br/>
+<hr>
+集合遍历 th:each：
+<table>
+    <tr>
+        <td>书名</td>
+        <td>价格</td>
+    </tr>
+    <tr th:each="book:${list}">
+        <td th:text="${book.name}">书名</td>
+        <td th:text="${book.money}">价格</td>
+    </tr>
+</table>
+动态ID th:id：<input type="text" th:id="'id'+${id}"><br/>
+属性设置值 th:value：<input type="text" th:value="${str}"><br/>
+文本替换值 th:text：<span th:text="${str}">文本值替换</span><br/>
+html文本替换 th:utext:<p th:utext="${htmlStr}">文本值替换</p>
+设置样式：th:style<input type="text" th:style="'background-color:#FF0000;'"><br/>
+点击事件 th:onclick：<input type="button" th:onclick="'alert(1)'" th:value="按钮"/><br/>
+链接 th:href：<a th:href="@{/login1}" th:text="登录1"></a> &nbsp;&nbsp;<a th:href="@{/login2}">登录2</a><br/>
+判断 th:if(满足时才会显示)：<a th:if="${id} > 5">大于</a> &nbsp;&nbsp; <a th:if="${id} < 5">小于</a>&nbsp;&nbsp; <a th:if="${id} == 5">等于</a><br/>
+表单action th:action:
+<form action="/login.html" th:action="@{/login}"></form><br/>
+下拉框选中 th:selected:
+<select>
+    <option th:selected="${id} == 1">第一</option>
+    <option th:selected="${id} == 2">第二</option>
+    <option th:selected="${id} == 3">第三</option>
+    <option th:selected="${id} == 4">第四</option>
+    <option th:selected="${id} == 5">第五</option>
+</select><br/>
+当前时间：<span th:text="${{currentDate}}">当前时间</span><br/>
+<span th:text="${#dates.format(currentDate,'yyyy-MM-dd HH:mm:ss')}">当前时间</span><br/>
+计算：<input type="text" th:value="${id}+1"><br/>
+</body>
+</html>
