@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="这是主页面">text</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<form th:action="@{/logout}" method="post"><button th:type="submit" th:text="退出">text</button></form>
+<hr/>
+
+<th:block sec:authorize="hasAuthority('/user/add')">
+    <a th:href="@{/user/add}">添加用户</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/user/edit')">
+    <a th:href="@{/user/edit}">修改用户</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/user/delete')">
+    <a th:href="@{/user/delete}">删除用户</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/user/list')">
+    <a th:href="@{/user/list}">查询用户</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/role/add')">
+        <a th:href="@{/role/add}">添加角色</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/role/delete')">
+    <a th:href="@{/role/delete}">删除角色</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/role/edit')">
+    <a th:href="@{/role/edit}">修改角色</a>
+</th:block>
+
+<th:block sec:authorize="hasAuthority('/role/list')">
+    <a th:href="@{/role/list}">查询角色</a>
+</th:block>
+
+<!--<th:block sec:authorize="hasAuthority('/perm/add')">-->
+    <!--<a th:href="@{/perm/add}">添加权限</a>-->
+<!--</th:block>-->
+
+<!--<th:block sec:authorize="hasAuthority('/perm/delete')">-->
+    <!--<a th:href="@{/perm/delete}">删除权限</a>-->
+<!--</th:block>-->
+
+<!--<th:block sec:authorize="hasAuthority('/perm/edit')">-->
+    <!--<a th:href="@{/perm/edit}">查询权限</a>-->
+<!--</th:block>-->
+
+<!--<th:block sec:authorize="hasAuthority('/perm/list')">-->
+    <!--<a th:href="@{/perm/list}">查询权限</a>-->
+<!--</th:block>-->
+
+</body>
+</html>

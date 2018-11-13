@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.allen.demo.mapper.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="org.allen.demo.domain.Permission" >
+    <id column="permId" property="permId" jdbcType="INTEGER" />
+    <result column="permName" property="permName" jdbcType="VARCHAR" />
+    <result column="permUrl" property="permUrl" jdbcType="VARCHAR" />
+    <result column="permType" property="permType" jdbcType="VARCHAR" />
+    <result column="permPid" property="permPid" jdbcType="INTEGER" />
+    <result column="permDesc" property="permDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    permId, permName, permUrl, permType, permPid, permDesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_permission
+    where permId = #{permId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_permission
+    where permId = #{permId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.allen.demo.domain.User" >
+    insert into t_permission (permId, permName, permUrl, permType, permPid, permDesc)
+    values (#{permId,jdbcType=INTEGER}, #{permName,jdbcType=VARCHAR}, #{permUrl,jdbcType=VARCHAR}
+      , #{permType,jdbcType=VARCHAR}, #{permPid,jdbcType=INTEGER}, #{permDesc,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.allen.demo.domain.User" >
+    update t_permission
+    <set >
+      <if test="permName != null" >
+        permName = #{permName,jdbcType=VARCHAR},
+      </if>
+      <if test="permUrl != null" >
+        permUrl = #{permUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="permType != null" >
+        permType = #{permType,jdbcType=VARCHAR},
+      </if>
+      <if test="permPid != null" >
+        permPid = #{permPid,jdbcType=INTEGER},
+      </if>
+      <if test="permDesc != null" >
+        permDesc = #{permDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permId = #{permId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.allen.demo.domain.User" >
+    update t_permission
+    set permName = #{permName,jdbcType=VARCHAR},
+      permUrl = #{permUrl,jdbcType=VARCHAR},
+      permType = #{permType,jdbcType=VARCHAR},
+      permPid = #{permPid,jdbcType=INTEGER},
+      permDesc = #{permDesc,jdbcType=VARCHAR}
+    where permId = #{permId,jdbcType=INTEGER}
+  </update>
+
+  <select id="loadPermissionsByUserId" resultMap="BaseResultMap" >
+    SELECT tp.*
+    FROM t_permission tp
+    LEFT JOIN t_role_permission trp ON trp.permId = tp.permId
+    LEFT JOIN t_user_role tur ON tur.roleId = trp.roleId
+    WHERE tur.userId = #{userId,jdbcType=INTEGER}
+  </select>
+</mapper>
