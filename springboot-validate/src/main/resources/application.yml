@@ -1,0 +1,9 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /validate
+
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
