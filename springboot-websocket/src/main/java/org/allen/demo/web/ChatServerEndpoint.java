@@ -16,7 +16,7 @@ import java.io.IOException;
  * @date 2019-02-13 15:35
  */
 @Controller
-@ServerEndpoint("/chat/{username}")
+@ServerEndpoint("/chat/{username}") //说明创建websocket的endpoint
 public class ChatServerEndpoint {
 
     @OnOpen

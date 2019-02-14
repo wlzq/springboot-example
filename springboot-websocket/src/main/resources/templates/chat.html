@@ -6,7 +6,6 @@
     <script src="jquery-1.9.1.min.js"></script>
     <script>
         $(function(){
-            alert(1);
             var webSocket;
             var url = 'ws://localhost:8090/websocket/chat/';
             //进入聊天室
@@ -14,7 +13,7 @@
                 var username = $('#username').val();
                 webSocket = new WebSocket(url+username);
                 webSocket.onopen = function (){
-                    console.log('webSocket连接创建中。。。');
+                    console.log('webSocket连接创建。。。');
                 }
                 webSocket.onclose = function(){
                     $('#messageArea').append('['+username+']离开了聊天室\n');
